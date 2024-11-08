@@ -12,12 +12,18 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
-// Initialize Firebase
+// Verify configuration
+console.log('Storage bucket:', firebaseConfig.storageBucket);
+console.log('Auth domain:', firebaseConfig.authDomain);
+
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
 
-// Get Firebase services
-export const auth = getAuth(app);
-export const db = getFirestore(app);
-export const storage = getStorage(app);
+// Verify storage initialization
+console.log('Storage initialized:', storage);
+console.log('Auth initialized:', auth);
 
+export { auth, db, storage };
 export default app;
